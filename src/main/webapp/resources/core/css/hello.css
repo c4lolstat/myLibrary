@@ -1,0 +1,42 @@
+
+.div-table {
+    display: table;
+    width: auto;
+    background-color: #eee;
+    border: 1px solid #666666;
+    border-spacing: 5px; /* cellspacing:poor IE support for  this */
+}
+.row {
+    display: table-row;
+    width: auto;
+    clear: both;
+}
+.deleted {
+    background-color: coral;
+}
+.lended {
+    background-color: magenta;
+}
+.col {
+    float: left; /* fix for  buggy browsers */
+    display: table-column;
+    width: 130px;
+}
+
+.text-input {
+    width: 125px;
+}
+
+.formError {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    font: 16px Tahoma, Geneva, sans-serif;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.error {
+    border-color:red;
+    border-style: solid;
+    border-width: 5px;
+}

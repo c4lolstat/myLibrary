@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+             xmlns:security="http://www.springframework.org/schema/security" xmlns:beans="http://www.springframework.org/schema/beans"
+             xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.1.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+        >
+
+    <!--<global-method-security pre-post-annotations="enabled" />-->
+    <http auto-config="true" >
+        <intercept-url pattern="/login*" access="permitAll" />
+        <intercept-url pattern="/populate" access="permitAll" />
+        <intercept-url pattern="/**" access="isAuthenticated()" />
+        <form-login authentication-failure-url="/login.html?error=true" authentication-success-handler-ref="myAuthSuccessHandler" />
+        <logout logout-success-url="/"/>
+        <csrf disabled="true"/>
+    </http>
+
+
+
+    <beans:bean id="myAuthSuccessHandler" class="com.epam.www.security.MyAuthSuccessHandler" />
+
+    <authentication-manager>
+        <authentication-provider>
+            <user-service>
+                <user name="Flynn" password="1234" authorities="ROLE_ADMIN" />
+                <user name="Dummy" password="1111" authorities="ROLE_USER" />
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+
+</beans:beans>

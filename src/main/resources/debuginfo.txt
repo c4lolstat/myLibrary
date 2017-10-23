@@ -1,0 +1,22 @@
+set GRADLE_OPTS=-XX:MaxPermSize=256M -Xdebug -Xrunjdwp:transport=dt_socket,address=9999,server=y,suspend=n
+gradle jettyRun
+
+http://localhost:8080/swagger-ui.html
+
+gradlew -Dorg.gradle.debug=true jettyRun
+then
+open debug connection
+
+
+insert into User values(1,555,'normal','kevin.smith@gmail.com','dsfdsf','dsfsd','1234')
+
+var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization( "Authorization", "jwt " + "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJrZXZpbi5zbWl0aEBnbWFpbC5jb20iLCJ1c2VySWQiOiIxIn0._mcZ2LxmFrB8anNTN33gIQEko1C1lkWHwjDByV495eqkX7sf_XSk_zxwdMGqG7BMppIr3J30UqKu2of65k8VRA", "header" );
+window.swaggerUi.api.clientAuthorizations.add( "bearer", apiKeyAuth );
+
+not working:
+- login
+- read library
+- library info
+
+If you have a Map, it should be in a body parameter with a POST operation.
+This is not a restriction of swagger-ui, it's a restriction of the OpenAPI Specification.
